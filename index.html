@@ -1,16 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hanyul - 제품 추천</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="topbar">
+        <div class="brand-group">
+          <img class="brand-mark" src="https://www.figma.com/api/mcp/asset/8081b8e8-d7bd-4127-b1b9-4a574ea93ca6" alt="logo" />
+          <div class="brand-text">
+            <span class="brand-kicker">HANYUL</span>
+            <strong>베스트샐러</strong>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-pill">
+            <img src="https://www.figma.com/api/mcp/asset/b6e3a172-ee6e-423f-8fbb-76c689ec43c3" alt="위치" />
+          </button>
+          <button class="icon-pill">
+            <img src="https://www.figma.com/api/mcp/asset/7752ab96-634a-4952-983a-6bf2435ea385" alt="검색" />
+          </button>
+        </div>
+      </section>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+      <section class="nav-tabs" aria-label="카테고리 탭">
+        <button class="tab active">베스트샐러</button>
+        <button class="tab">라인</button>
+        <button class="tab">제품</button>
+        <button class="tab">후기글</button>
+        <button class="tab">브랜드</button>
+      </section>
 
-<body>
-    <ul>
-        <li></li>
-    </ul>
-</body>
+      <section class="hero-panels">
+        <article class="panel panel-left">
+          <img class="panel-bg" src="https://www.figma.com/api/mcp/asset/58f48c88-f82d-438e-bbc1-e90ea84d6b15" alt="유형별 제품 추천 배경" />
+          <div class="panel-overlay">
+            <h2>유형별</h2>
+            <p>
+              어떤 제품을 찾고 계신가요?
+              <br />
+              필요한 단계의 제품을 쉽고 빠르게 찾아보세요.
+            </p>
+            <a class="cta-link" href="#">
+              내 루틴에 맞는 제품 찾기
+              <img src="https://www.figma.com/api/mcp/asset/321da711-b862-4eee-af44-2ca16e70ec69" alt="화살표" />
+            </a>
+          </div>
+        </article>
 
+        <article class="panel panel-right">
+          <img class="panel-bg" src="https://www.figma.com/api/mcp/asset/4a003028-4910-4630-8eb7-6371f15c42be" alt="고민별 제품 추천 배경" />
+          <div class="panel-overlay">
+            <h2>고민별</h2>
+            <p>
+              어떤 피부 고민이 있으신가요?
+              <br />
+              내 피부에 맞는 맞춤 케어를 추천해드립니다.
+            </p>
+            <a class="cta-link muted" href="#">
+              내 루틴에 맞는 제품 찾기
+              <img src="https://www.figma.com/api/mcp/asset/f2c2b9f6-e98e-4246-9b79-d711a4585af7" alt="화살표" />
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="category-section">
+        <div class="category-card active">
+          <div class="icon-badge">
+            <img src="https://www.figma.com/api/mcp/asset/4437532e-5925-49a3-9b0e-c921071a44be" alt="클렌징" />
+          </div>
+          <span>클렌징</span>
+        </div>
+        <div class="category-card">
+          <div class="icon-badge">
+            <img src="https://www.figma.com/api/mcp/asset/2d493cc3-d23a-46f5-aa5a-13eaf1994a27" alt="토너" />
+          </div>
+          <span>토너</span>
+        </div>
+        <div class="category-card">
+          <div class="icon-badge">
+            <img src="https://www.figma.com/api/mcp/asset/da3eaed8-1359-4475-81c1-8c6f0fff52f9" alt="에센스" />
+          </div>
+          <span>에센스</span>
+        </div>
+        <div class="category-card">
+          <div class="icon-badge">
+            <img src="https://www.figma.com/api/mcp/asset/03891de7-2381-4a6e-ba71-cf471f49cba2" alt="크림" />
+          </div>
+          <span>크림</span>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
