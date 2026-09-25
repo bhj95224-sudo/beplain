@@ -154,8 +154,9 @@ button {
 /* ---------- 브랜드 바 (소개 이동) ---------- */
 
 .brand_bar {
-  position: relative;
-  z-index: 4;
+  position: sticky;
+  top: 12px;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
