@@ -1367,7 +1367,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   top: 256px;
   left: 0;
   display: flex;
-  width: 17280px;
+  width: 11520px;
   height: 636px;
   margin: 0;
   padding: 0;
@@ -1382,7 +1382,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
 .carousel_slide {
   display: flex;
-  flex: 0 0 11.1111%;
+  flex: 0 0 16.6667%;
   align-items: center;
   justify-content: center;
   gap: 40px;
@@ -1402,6 +1402,36 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   object-fit: contain;
   pointer-events: none;
   user-select: none;
+}
+
+.product_model {
+  position: relative;
+  flex: 0 0 537.59px;
+  width: 537.59px;
+  max-width: 537.59px;
+  height: 636px;
+  overflow: hidden;
+}
+
+.product_model canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.product_model_status {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 20px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.product_model.has_error .product_model_status {
+  color: var(--yellow);
 }
 
 .carousel_slide p {
@@ -1903,6 +1933,16 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   .carousel_slide img {
     max-width: 172.78px;
     height: 205px;
+  }
+
+  .product_model {
+    flex-basis: 205px;
+    width: 172.78px;
+    height: 205px;
+  }
+
+  .product_model_status {
+    font-size: 12px;
   }
 
   .carousel_slide p {
@@ -2724,7 +2764,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_track {
     top: 224px;
-    width: 15120px;
+    width: 10080px;
     height: 556.48px;
   }
 
@@ -2734,6 +2774,12 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 470.39px;
+    height: 556.48px;
+  }
+
+  .product_model {
+    flex-basis: 470.39px;
+    width: 470.39px;
     height: 556.48px;
   }
 
@@ -3504,7 +3550,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_track {
     top: 192px;
-    width: 12960px;
+    width: 8640px;
     height: 477px;
   }
 
@@ -3514,6 +3560,12 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 403.19px;
+    height: 477px;
+  }
+
+  .product_model {
+    flex-basis: 403.19px;
+    width: 403.19px;
     height: 477px;
   }
 
@@ -4284,7 +4336,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_track {
     top: 160px;
-    width: 10800px;
+    width: 7200px;
     height: 397.48px;
   }
 
@@ -4294,6 +4346,12 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 336px;
+    height: 397.48px;
+  }
+
+  .product_model {
+    flex-basis: 336px;
+    width: 336px;
     height: 397.48px;
   }
 
@@ -5064,7 +5122,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_track {
     top: 136.52px;
-    width: 9216px;
+    width: 6144px;
     height: 339.19px;
   }
 
@@ -5074,6 +5132,12 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 286.7px;
+    height: 339.19px;
+  }
+
+  .product_model {
+    flex-basis: 286.7px;
+    width: 286.7px;
     height: 339.19px;
   }
 
@@ -5708,7 +5772,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   }
 
   .carousel_track {
-    width: 6912px;
+    width: 4608px;
   }
 
   .site_footer {
@@ -5851,6 +5915,10 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 368.63px;
+  }
+
+  .product_model {
+    width: 368.63px;
   }
 
   .carousel_slide p {
@@ -6440,7 +6508,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   }
 
   .carousel_track {
-    width: 4320px;
+    width: 2880px;
   }
 
   .site_footer {
@@ -6583,6 +6651,10 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
 
   .carousel_slide img {
     max-width: 230.39px;
+  }
+
+  .product_model {
+    width: 230.39px;
   }
 
   .carousel_slide p {
@@ -7172,7 +7244,7 @@ span.story_deco.story_deco_holo_second > span.story_holo_crop > img {
   }
 
   .carousel_track {
-    width: 3240px;
+    width: 2160px;
   }
 
   .site_footer {

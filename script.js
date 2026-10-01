@@ -1,8 +1,10 @@
+import { initProductModels } from "./product-3d.js";
+
 const WHEEL_MIN_DELTA = 20;
 const WHEEL_LOCK_MS = 900;
 const WHEEL_IDLE_MS = 200;
 
-function initCarousel() {
+function initCarousel(productModels) {
   const carousel = document.querySelector(".carousel");
   if (!carousel) return;
 
@@ -33,13 +35,14 @@ function initCarousel() {
     });
 
     if (shouldAnnounce && status) {
-      const activeImage = slides[currentIndex].querySelector("img");
-      status.textContent = `${activeImage.alt}, ${currentIndex + 1} / ${slides.length}`;
+      status.textContent = `${slides[currentIndex].dataset.productName}, ${currentIndex + 1} / ${slides.length}`;
     }
   }
 
   function moveCarousel(step) {
+    const previousIndex = currentIndex;
     currentIndex = (currentIndex + step + slides.length) % slides.length;
+    productModels.spinSlides(slides[previousIndex], slides[currentIndex]);
     renderCarousel();
   }
 
@@ -295,7 +298,8 @@ function initReveal() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initCarousel();
+  const productModels = initProductModels();
+  initCarousel(productModels);
   initScrollTop();
   initCategoryPosition();
   initCategoryNavigation();
