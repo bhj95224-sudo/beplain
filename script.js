@@ -1,3 +1,7 @@
+const WHEEL_MIN_DELTA = 20;
+const WHEEL_LOCK_MS = 900;
+const WHEEL_IDLE_MS = 200;
+
 function initCarousel() {
   const carousel = document.querySelector(".carousel");
   if (!carousel) return;
@@ -73,8 +77,31 @@ function initCarousel() {
     }
   }
 
+  // 가로 스크롤(트랙패드 스와이프, Shift + 휠)로 슬라이드 이동. 세로 휠은 페이지 스크롤 유지
+  let wheelLockUntil = 0;
+
+  function handleCarouselWheel(event) {
+    const isHorizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    const isShiftWheel = event.shiftKey && event.deltaY !== 0;
+    if (!isHorizontal && !isShiftWheel) return;
+
+    event.preventDefault();
+    const delta = isHorizontal ? event.deltaX : event.deltaY;
+    const now = performance.now();
+
+    if (now < wheelLockUntil) {
+      wheelLockUntil = Math.max(wheelLockUntil, now + WHEEL_IDLE_MS);
+      return;
+    }
+
+    if (Math.abs(delta) < WHEEL_MIN_DELTA) return;
+    moveCarousel(delta > 0 ? 1 : -1);
+    wheelLockUntil = now + WHEEL_LOCK_MS;
+  }
+
   prevButton.addEventListener("click", () => moveCarousel(-1));
   nextButton.addEventListener("click", () => moveCarousel(1));
+  viewport.addEventListener("wheel", handleCarouselWheel, { passive: false });
   viewport.addEventListener("pointerdown", handlePointerDown);
   viewport.addEventListener("pointermove", handlePointerMove);
   viewport.addEventListener("pointerup", finishDrag);
@@ -232,9 +259,45 @@ function initCategoryPosition() {
   window.addEventListener("scroll", handleCategoryScroll, { passive: true });
 }
 
+const REVEAL_STAGGER_MS = 600;
+const REVEAL_BASE_DELAY_MS = 200;
+
+function initReveal() {
+  const items = Array.from(document.querySelectorAll(".reveal_item, .pop_item"));
+  if (!items.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+
+  function showItem(item, delayMs) {
+    item.style.transitionDelay = `${delayMs}ms`;
+    item.classList.add("is_visible");
+    observer.unobserve(item);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => items.indexOf(a.target) - items.indexOf(b.target)); // 문서 순서(1→4)대로
+
+      // 뿅 등장(pop_item)이 먼저, 나머지(reveal_item)는 문서 순서대로 하나씩 차례로
+      visibleEntries.filter((entry) => entry.target.classList.contains("pop_item")).forEach((entry) => showItem(entry.target, 0));
+      visibleEntries
+        .filter((entry) => !entry.target.classList.contains("pop_item"))
+        .forEach((entry, index) => showItem(entry.target, REVEAL_BASE_DELAY_MS + index * REVEAL_STAGGER_MS));
+    },
+    { threshold: 0.1 }
+  );
+
+  items.forEach((item) => {
+    item.classList.add("is_reveal_ready");
+    observer.observe(item);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
   initScrollTop();
   initCategoryPosition();
   initCategoryNavigation();
+  initReveal();
 });
